@@ -7,6 +7,12 @@ face_cascade = cv2.CascadeClassifier(
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read("trainner.yml")
 
+# load label ids
+lables = {"person_name": 1}
+with open("labels.pickle", 'rb') as f:
+    og_labels = pickle.load(f)
+    labels = {v: k for k, v in og_labels.items()}
+
 webcam = cv2.VideoCapture(0)
 
 while True:
@@ -29,6 +35,7 @@ while True:
         id_, conf = recognizer.predict(roi_gray)
         if conf >= 50 and conf <= 90:
             print(id_)
+            print(labels[id_])
 
         img_item = "its_me.png"
         cv2.imwrite(img_item, roi_gray)
