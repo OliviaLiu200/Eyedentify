@@ -46,8 +46,7 @@ while True:
 
     # takes image of face
     #roi_actual = frame[y:y+h, x:x+w]
-    #img_item = "me31.png"
-    #cv2.imwrite(img_item, roi_actual)
+    #cv2.imwrite("me31.png", roi_actual)
 
     # display frame
     cv2.imshow('frame', frame)
